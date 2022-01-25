@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     VentanListarElementos ven = new VentanListarElementos();
-
+    VentanaComplejidad vc = new VentanaComplejidad();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -28,7 +28,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         input3.setVisible(false);
         je4.setVisible(false);
         input4.setVisible(false);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -55,6 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         input4 = new javax.swing.JTextField();
         je4 = new javax.swing.JLabel();
         btnComplejidad = new javax.swing.JButton();
+        btnPFNA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,17 +91,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnPFNA.setText("Calcular PFNA");
+        btnPFNA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPFNAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(je1)
@@ -117,8 +120,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(118, Short.MAX_VALUE))
+                            .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(155, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnPFNA, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +160,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAñadir)
-                    .addComponent(btnComplejidad))
+                    .addComponent(btnComplejidad)
+                    .addComponent(btnPFNA))
                 .addGap(20, 20, 20))
         );
 
@@ -176,7 +187,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirActionPerformed
         // TODO add your handling code here:
-
+        
         ven.setLocationRelativeTo(null);
         if (tiposE.getSelectedItem().toString().equals("EE")) {
             if (!input3.getText().equals("") && !input1.getText().equals("") && !input5.getText().equals("")) {
@@ -204,6 +215,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Asegurese de haber rellenado todos los campos.");
             }
         }
+        JOptionPane.showMessageDialog(null, "Recuerde calcular la complejidad del elemento que acaba de añadir para que este se tenga en cuenta","Alert",JOptionPane.WARNING_MESSAGE);
         resetEntradas();
 
     }//GEN-LAST:event_btnAñadirActionPerformed
@@ -248,71 +260,122 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             if (noElementos >= 1 && noElementos <= 4) {
                 if (noEntrada >= 0 && noEntrada <= 2) {
                     complejidad = "S";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 3) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             } else if (noElementos >= 5 && noElementos <= 15) {
                 if (noEntrada == 0 || noEntrada == 1) {
                     complejidad = "S";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada == 2) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 3) {
                     complejidad = "C";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             } else if (noElementos >= 16) {
                 if (noEntrada == 0 || noEntrada == 1) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 2) {
                     complejidad = "C";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             }
         } else if (datos[2].matches("SE|CE")) {
             if (noElementos >= 1 && noElementos <= 5) {
                 if (noEntrada >= 0 && noEntrada <= 3) {
                     complejidad = "S";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 4) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             } else if (noElementos >= 6 && noElementos <= 19) {
                 if (noEntrada == 0 || noEntrada == 1) {
                     complejidad = "S";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada == 2 || noEntrada==3) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 4) {
                     complejidad = "C";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             } else if (noElementos >= 20) {
                 if (noEntrada == 0 || noEntrada == 1) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 2) {
                     complejidad = "C";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             }
         } else if (datos[2].matches("FLI|FLE")) {
             if (noElementos >= 1 && noElementos <= 19) {
                 if (noEntrada >= 1 && noEntrada <= 5) {
                     complejidad = "S";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 6) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             } else if (noElementos >= 20 && noElementos <= 50) {
                 if (noEntrada >= 1) {
                     complejidad = "S";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 2 && noEntrada <= 5) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada >= 6) {
                     complejidad = "C";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             } else if (noElementos >= 51) {
                 if (noEntrada >= 2) {
                     complejidad = "C";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 } else if (noEntrada == 1) {
                     complejidad = "M";
+                    vc.añadirComplejidad(datos[2],complejidad);
+                    vc.setVisible(true);
                 }
             }
         }
         JOptionPane.showMessageDialog(null, "La complejidad del elemento funcional " + datos[2] + " es  " + complejidad);
     }//GEN-LAST:event_btnComplejidadActionPerformed
+
+    private void btnPFNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPFNAActionPerformed
+        if (vc.calcularPFNA() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe añadir y calcular la complejidad de los elementos si desea calcular el PFNA.","Alert",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El PFNA es igual a " + vc.calcularPFNA());
+        }
+    }//GEN-LAST:event_btnPFNAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,6 +415,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAñadir;
     private javax.swing.JButton btnComplejidad;
+    private javax.swing.JButton btnPFNA;
     private javax.swing.JTextField input1;
     private javax.swing.JTextField input2;
     private javax.swing.JTextField input3;
