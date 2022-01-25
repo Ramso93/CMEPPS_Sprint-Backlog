@@ -5,17 +5,30 @@
  */
 package Sprint;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ramso
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    VentanListarElementos ven = new VentanListarElementos();
+
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
+        je2.setVisible(false);
+        input2.setVisible(false);
+        je3.setVisible(false);
+        input3.setVisible(false);
+        je4.setVisible(false);
+        input4.setVisible(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -28,14 +41,53 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAñadir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        tiposE = new javax.swing.JComboBox<>();
+        je1 = new javax.swing.JLabel();
+        input1 = new javax.swing.JTextField();
+        je2 = new javax.swing.JLabel();
+        input2 = new javax.swing.JTextField();
+        je5 = new javax.swing.JLabel();
+        input5 = new javax.swing.JTextField();
+        input3 = new javax.swing.JTextField();
+        je3 = new javax.swing.JLabel();
+        input4 = new javax.swing.JTextField();
+        je4 = new javax.swing.JLabel();
+        btnComplejidad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Añadir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAñadir.setText("Añadir");
+        btnAñadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAñadirActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Elemento funcional:");
+
+        tiposE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar tipo", "EE", "SE", "CE", "FLI", "FLE" }));
+        tiposE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiposEActionPerformed(evt);
+            }
+        });
+
+        je1.setText("Nombre:");
+
+        je2.setText("Nº Ficheros  Referenciados:");
+
+        je5.setText("Nº  Datos Elementales:");
+
+        je3.setText("Nº Ficheros  Relacionados");
+
+        je4.setText("Nº Tipos de Registros");
+
+        btnComplejidad.setText("Calcular Complejidad");
+        btnComplejidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComplejidadActionPerformed(evt);
             }
         });
 
@@ -44,16 +96,62 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(je1)
+                            .addComponent(jLabel1)
+                            .addComponent(je2)
+                            .addComponent(je3)
+                            .addComponent(je4)
+                            .addComponent(je5))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jButton1)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(je1)
+                    .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(je2)
+                    .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(je3)
+                    .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(je4)
+                    .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(je5)
+                    .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAñadir)
+                    .addComponent(btnComplejidad))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,24 +159,160 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(33, 33, 33)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+        ven.setLocationRelativeTo(null);
+        if (tiposE.getSelectedItem().toString().equals("EE")) {
+            if (!input3.getText().equals("") && !input1.getText().equals("") && !input5.getText().equals("")) {
+                ven.setVisible(true);
+                ven.introducirElemento(tiposE.getSelectedItem().toString(), input1.getText(), input5.getText(), input3.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Asegurese de haber rellenado todos los campos.");
+            }
+        }
+        if (tiposE.getSelectedItem().toString().matches("SE|CE")) {
+            if (!input2.getText().equals("") && !input1.getText().equals("") && !input5.getText().equals("")) {
+                ven.setVisible(true);
+                ven.introducirElemento(tiposE.getSelectedItem().toString(), input1.getText(), input5.getText(), input2.getText());
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Asegurese de haber rellenado todos los campos.");
+            }
+        }
+        if (tiposE.getSelectedItem().toString().matches("FLI|FLE")) {
+            if (input4.getText().equals("") && input1.getText().equals("") && input5.getText().equals("")) {
+                ven.setVisible(true);
+                ven.introducirElemento(tiposE.getSelectedItem().toString(), input1.getText(), input5.getText(), input4.getText());
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Asegurese de haber rellenado todos los campos.");
+            }
+        }
+        resetEntradas();
+
+    }//GEN-LAST:event_btnAñadirActionPerformed
+
+    private void tiposEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiposEActionPerformed
+        // TODO add your handling code here:
+
+        if (tiposE.getSelectedItem().toString().equals("EE")) {
+            je3.setVisible(true);
+            input3.setVisible(true);
+            je2.setVisible(false);
+            input2.setVisible(false);
+
+            je4.setVisible(false);
+            input4.setVisible(false);
+        } else if (tiposE.getSelectedItem().toString().matches("SE|CE")) {
+            je2.setVisible(true);
+            input2.setVisible(true);
+
+            je3.setVisible(false);
+            input3.setVisible(false);
+            je4.setVisible(false);
+            input4.setVisible(false);
+        } else if (tiposE.getSelectedItem().toString().matches("FLI|FLE")) {
+            je4.setVisible(true);
+            input4.setVisible(true);
+            je2.setVisible(false);
+            input2.setVisible(false);
+            je3.setVisible(false);
+            input3.setVisible(false);
+        }
+
+    }//GEN-LAST:event_tiposEActionPerformed
+
+    private void btnComplejidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplejidadActionPerformed
+        // TODO add your handling code here:
+        String[] datos = ven.getElemento();
+        String complejidad = "Sin valor.";
+        int noElementos = Integer.parseInt(datos[0]);
+        int noEntrada = Integer.parseInt(datos[1]);
+        if (datos[2].equals("EE")) {
+            if (noElementos >= 1 && noElementos <= 4) {
+                if (noEntrada >= 0 && noEntrada <= 2) {
+                    complejidad = "S";
+                } else if (noEntrada >= 3) {
+                    complejidad = "M";
+                }
+            } else if (noElementos >= 5 && noElementos <= 15) {
+                if (noEntrada == 0 || noEntrada == 1) {
+                    complejidad = "S";
+                } else if (noEntrada == 2) {
+                    complejidad = "M";
+                } else if (noEntrada >= 3) {
+                    complejidad = "C";
+                }
+            } else if (noElementos >= 16) {
+                if (noEntrada == 0 || noEntrada == 1) {
+                    complejidad = "M";
+                } else if (noEntrada >= 2) {
+                    complejidad = "C";
+                }
+            }
+        } else if (datos[2].matches("SE|CE")) {
+            if (noElementos >= 1 && noElementos <= 5) {
+                if (noEntrada >= 0 && noEntrada <= 3) {
+                    complejidad = "S";
+                } else if (noEntrada >= 4) {
+                    complejidad = "M";
+                }
+            } else if (noElementos >= 6 && noElementos <= 19) {
+                if (noEntrada == 0 || noEntrada == 1) {
+                    complejidad = "S";
+                } else if (noEntrada == 2 || noEntrada==3) {
+                    complejidad = "M";
+                } else if (noEntrada >= 4) {
+                    complejidad = "C";
+                }
+            } else if (noElementos >= 20) {
+                if (noEntrada == 0 || noEntrada == 1) {
+                    complejidad = "M";
+                } else if (noEntrada >= 2) {
+                    complejidad = "C";
+                }
+            }
+        } else if (datos[2].matches("FLI|FLE")) {
+            if (noElementos >= 1 && noElementos <= 19) {
+                if (noEntrada >= 1 && noEntrada <= 5) {
+                    complejidad = "S";
+                } else if (noEntrada >= 6) {
+                    complejidad = "M";
+                }
+            } else if (noElementos >= 20 && noElementos <= 50) {
+                if (noEntrada >= 1) {
+                    complejidad = "S";
+                } else if (noEntrada >= 2 && noEntrada <= 5) {
+                    complejidad = "M";
+                } else if (noEntrada >= 6) {
+                    complejidad = "C";
+                }
+            } else if (noElementos >= 51) {
+                if (noEntrada >= 2) {
+                    complejidad = "C";
+                } else if (noEntrada == 1) {
+                    complejidad = "M";
+                }
+            }
+        }
+        JOptionPane.showMessageDialog(null, "La complejidad del elemento funcional " + datos[2] + " es  " + complejidad);
+    }//GEN-LAST:event_btnComplejidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,7 +350,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAñadir;
+    private javax.swing.JButton btnComplejidad;
+    private javax.swing.JTextField input1;
+    private javax.swing.JTextField input2;
+    private javax.swing.JTextField input3;
+    private javax.swing.JTextField input4;
+    private javax.swing.JTextField input5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel je1;
+    private javax.swing.JLabel je2;
+    private javax.swing.JLabel je3;
+    private javax.swing.JLabel je4;
+    private javax.swing.JLabel je5;
+    private javax.swing.JComboBox<String> tiposE;
     // End of variables declaration//GEN-END:variables
+
+    private void resetEntradas() {
+        input1.setText("");
+        input2.setText("");
+        input3.setText("");
+        input4.setText("");
+        input5.setText("");
+    }
 }
