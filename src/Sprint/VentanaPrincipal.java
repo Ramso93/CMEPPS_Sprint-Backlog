@@ -5,7 +5,6 @@
  */
 package Sprint;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +15,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     VentanListarElementos ven = new VentanListarElementos();
     VentanaComplejidad vc = new VentanaComplejidad();
+    ventanaSVA vf = new ventanaSVA();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -55,6 +55,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         je4 = new javax.swing.JLabel();
         btnComplejidad = new javax.swing.JButton();
         btnPFNA = new javax.swing.JButton();
+        btncalcularFA = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,12 +99,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btncalcularFA.setText("Calcular  SVA");
+        btncalcularFA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncalcularFAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(252, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,14 +129,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(155, Short.MAX_VALUE))
+                        .addContainerGap(321, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(btnPFNA, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btncalcularFA, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +171,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAñadir)
                     .addComponent(btnComplejidad)
-                    .addComponent(btnPFNA))
+                    .addComponent(btnPFNA)
+                    .addComponent(btncalcularFA))
                 .addGap(20, 20, 20))
         );
 
@@ -377,6 +388,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPFNAActionPerformed
 
+    private void btncalcularFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalcularFAActionPerformed
+        // TODO add your handling code here:
+        
+        vf.setVisible(true);
+    }//GEN-LAST:event_btncalcularFAActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -416,6 +433,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAñadir;
     private javax.swing.JButton btnComplejidad;
     private javax.swing.JButton btnPFNA;
+    private javax.swing.JToggleButton btncalcularFA;
     private javax.swing.JTextField input1;
     private javax.swing.JTextField input2;
     private javax.swing.JTextField input3;

@@ -47,7 +47,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace pref="252" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -67,7 +67,7 @@
                               <Component id="input2" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
                               <Component id="tiposE" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="155" max="32767" attributes="0"/>
+                          <EmptySpace pref="321" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnAñadir" min="-2" pref="73" max="-2" attributes="0"/>
@@ -75,7 +75,9 @@
                           <Component id="btnComplejidad" min="-2" pref="153" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="btnPFNA" min="-2" pref="119" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btncalcularFA" min="-2" pref="132" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -119,6 +121,7 @@
                       <Component id="btnAñadir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnComplejidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPFNA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btncalcularFA" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -208,6 +211,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPFNAActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="btncalcularFA">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Calcular  SVA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncalcularFAActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
