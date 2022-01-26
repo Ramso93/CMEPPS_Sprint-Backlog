@@ -5,7 +5,13 @@
  */
 package Sprint;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -15,12 +21,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     VentanListarElementos ven = new VentanListarElementos();
     VentanaComplejidad vc = new VentanaComplejidad();
-    ventanaSVA vf = new ventanaSVA();
+    ventanaSVA sva;
+    
+    public static ArrayList<Integer> datos = new ArrayList<>(16);
+    boolean datosGuardados;
+    float fa = 0, pfa = 0; // pfa = pf
+    float esfuerzoC = 0, esfuerzoE = 0, esfuerzo, duracion;
+    float duracionC = 0, duracionE = 0;
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        setTitle("Practica Punto Función");
         setLocationRelativeTo(null);
         je2.setVisible(false);
         input2.setVisible(false);
@@ -28,6 +41,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         input3.setVisible(false);
         je4.setVisible(false);
         input4.setVisible(false);
+        datosGuardados = false;
+        panelEsfuerzo.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "Estimacion Esfuerzo", TitledBorder.LEFT,
+        TitledBorder.TOP));
+        panelDuracion.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "Estimación Duración", TitledBorder.LEFT,
+        TitledBorder.TOP));
     }
 
     /**
@@ -56,6 +76,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnComplejidad = new javax.swing.JButton();
         btnPFNA = new javax.swing.JButton();
         btncalcularFA = new javax.swing.JToggleButton();
+        panelEsfuerzo = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        caracteristicasProyectoEsfuerzo = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        panelDuracion = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        caracteristicasProyectoDuracion = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,39 +143,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnPFNA, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(btncalcularFA, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(je1)
-                            .addComponent(jLabel1)
-                            .addComponent(je2)
-                            .addComponent(je3)
-                            .addComponent(je4)
-                            .addComponent(je5))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(321, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnPFNA, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btncalcularFA, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                    .addComponent(je1)
+                    .addComponent(jLabel1)
+                    .addComponent(je2)
+                    .addComponent(je3)
+                    .addComponent(je4)
+                    .addComponent(je5))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(154, 154, 154))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,7 +198,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(je5)
                     .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAñadir)
                     .addComponent(btnComplejidad)
@@ -176,6 +207,111 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        jLabel2.setText("Proyecto");
+
+        caracteristicasProyectoEsfuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar caracterisita", "MF", "MR", "PC", "Multi", "3GL", "4GL", "GenAp", "Mantenimiento", "Nuevo", "MF-3GL", "MF-4GL", "MF-GenAp", "MR-3GL", "MR-4GL", "PC-3GL", "PC-4GL", "Multi-3GL", "Multi-4GL", "MF-3GL-Mantenimiento" }));
+        caracteristicasProyectoEsfuerzo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caracteristicasProyectoEsfuerzoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Estimar esfuerzo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEsfuerzoLayout = new javax.swing.GroupLayout(panelEsfuerzo);
+        panelEsfuerzo.setLayout(panelEsfuerzoLayout);
+        panelEsfuerzoLayout.setHorizontalGroup(
+            panelEsfuerzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEsfuerzoLayout.createSequentialGroup()
+                .addGroup(panelEsfuerzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEsfuerzoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(caracteristicasProyectoEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelEsfuerzoLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton1)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        panelEsfuerzoLayout.setVerticalGroup(
+            panelEsfuerzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEsfuerzoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEsfuerzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(caracteristicasProyectoEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        jLabel3.setText("Proyecto");
+
+        caracteristicasProyectoDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar caracterisita", "PC", "Multi", "4GL", "Nuevo", "PC-4GL", "Multi-4GL", "PC-4GL-Nuevo", "Multi-4GL-Nuevo", "Otro" }));
+        caracteristicasProyectoDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caracteristicasProyectoDuracionActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Estimar duración");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelDuracionLayout = new javax.swing.GroupLayout(panelDuracion);
+        panelDuracion.setLayout(panelDuracionLayout);
+        panelDuracionLayout.setHorizontalGroup(
+            panelDuracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDuracionLayout.createSequentialGroup()
+                .addGroup(panelDuracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDuracionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(caracteristicasProyectoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDuracionLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelDuracionLayout.setVerticalGroup(
+            panelDuracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDuracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDuracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(caracteristicasProyectoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jButton2)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        jMenu1.setText("Opciones");
+
+        jMenu3.setText("Editar/Eliminar elemento");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu3);
+
+        jMenu2.setText("Salir");
+        jMenu1.add(jMenu2);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,14 +319,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(62, 62, 62))
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(panelEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -218,7 +364,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
         if (tiposE.getSelectedItem().toString().matches("FLI|FLE")) {
-            if (input4.getText().equals("") && input1.getText().equals("") && input5.getText().equals("")) {
+            if (!input4.getText().equals("") && !input1.getText().equals("") && !input5.getText().equals("")) {
                 ven.setVisible(true);
                 ven.introducirElemento(tiposE.getSelectedItem().toString(), input1.getText(), input5.getText(), input4.getText());
 
@@ -390,9 +536,85 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btncalcularFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalcularFAActionPerformed
         // TODO add your handling code here:
-        
-        vf.setVisible(true);
+        sva = new ventanaSVA();
+        sva.setVisible(true);
+        fa = (float) (0.65 + (0.01 * this.datos.get(15)));
+        pfa = vc.calcularPFNA() * fa;
     }//GEN-LAST:event_btncalcularFAActionPerformed
+
+    private void caracteristicasProyectoEsfuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caracteristicasProyectoEsfuerzoActionPerformed
+        // TODO add your handling code here:
+        switch(caracteristicasProyectoEsfuerzo.getSelectedItem().toString()){
+            case "MF": esfuerzoC = (float) 49.02; esfuerzoE = (float) 0.736; break;
+            case "MR": esfuerzoC = (float) 78.88; esfuerzoE = (float) 0.646; break;
+            case "PC": esfuerzoC = (float) 48.90; esfuerzoE = (float) 0.661; break;
+            case "Multi": esfuerzoC = (float) 16.01; esfuerzoE = (float) 0.865; break;
+            case "3GL": esfuerzoC = (float) 54.65; esfuerzoE = (float) 0.717; break;
+            case "4GL": esfuerzoC = (float) 29.50; esfuerzoE = (float) 0.758; break;
+            case "GenAp": esfuerzoC = (float) 68.11; esfuerzoE = (float) 0.660; break;
+            case "Mantenimiento": esfuerzoC = (float) 52.58; esfuerzoE = (float) 0.683; break;
+            case "Nuevo": esfuerzoC = (float) 39.05; esfuerzoE = (float) 0.731; break;
+            case "MF-3GL": esfuerzoC = (float) 65.37; esfuerzoE = (float) 0.705; break;
+            case "MF-4GL": esfuerzoC = (float) 52.09; esfuerzoE = (float) 0.640; break;
+            case "MF-GenAp": esfuerzoC = (float) 65.68; esfuerzoE = (float) 0.692; break;
+            case "MR-3GL": esfuerzoC = (float) 126.3; esfuerzoE = (float) 0.565; break;
+            case "MR-4GL": esfuerzoC = (float) 62.35; esfuerzoE = (float) 0.694; break;
+            case "PC-3GL": esfuerzoC = (float) 60.46; esfuerzoE = (float) 0.648; break;
+            case "PC-4GL": esfuerzoC = (float) 36.48; esfuerzoE = (float) 0.694; break;
+            case "Multi-3GL": esfuerzoC = (float) 19.82; esfuerzoE = (float) 0.666; break;
+            case "Multi-4GL": esfuerzoC = (float) 6.49; esfuerzoE = (float) 0.983; break;
+            case "MF-3GL-Mantenimiento": esfuerzoC = (float) 83.27; esfuerzoE = (float) 0.650; break;
+        }
+    }//GEN-LAST:event_caracteristicasProyectoEsfuerzoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        // Your code here! 19.82*(25.28)^0.666 170.354330682
+        //float f = (float)Math.pow(25.28, 0.666);
+        //float e = (float)19.82 * f;
+        //System.out.println(e);
+        esfuerzo = esfuerzoC * (float)Math.pow(pfa, esfuerzoE);
+        //esfuerzo = (float) (19.82 * (float)Math.pow(25.28, 0.666));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String s = df.format(esfuerzo);
+        //System.out.println(df.format(esfuerzo)+" horas");
+        JOptionPane.showMessageDialog(null, "La estimación, a partir de tamaño en PF, del esfuerzo"
+                + " es de "+s+" horas");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void caracteristicasProyectoDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caracteristicasProyectoDuracionActionPerformed
+        // TODO add your handling code here:
+        switch(caracteristicasProyectoEsfuerzo.getSelectedItem().toString()){
+            case "PC": duracionC = (float) 0.503; duracionE = (float) 0.409; break;
+            case "Multi": duracionC = (float) 0.679; duracionE = (float) 0.341; break;
+            case "4GL": duracionC = (float) 0.578; duracionE = (float) 0.393; break;
+            case "Nuevo": duracionC = (float) 0.739; duracionE = (float) 0.359; break;
+            case "PC-4GL": duracionC = (float) 0.348; duracionE = (float) 0.471; break;
+            case "Multi-4GL": duracionC = (float) 0.366; duracionE = (float) 0.451; break;
+            case "PC-4GL-Nuevo": duracionC = (float) 0.250; duracionE = (float) 0.515; break;
+            case "Multi-4GL-Nuevo": duracionC = (float) 0.240; duracionE = (float) 0.518; break;
+            case "Otro": duracionC = (float) 0.411; duracionE = (float) 0.328; break;
+        }
+    }//GEN-LAST:event_caracteristicasProyectoDuracionActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //float f = (float)Math.pow(25.28, 0.666);
+        //float e = (float)19.82 * f;
+        //System.out.println(e);
+        //duracion = duracionC * (float)Math.pow(pfa, duracionE);
+        duracion = (float) (0.679 * (float)Math.pow(25.28, 0.341));
+        DecimalFormat df = new DecimalFormat("#.##");
+        String s = df.format(duracion);
+        //System.out.println(df.format(duracion)+" horas");
+        JOptionPane.showMessageDialog(null, "La estimación, a partir de tamaño en PF, del esfuerzo"
+                + " es de "+s+" meses(1 persona)");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here:
+        ven.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -434,18 +656,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnComplejidad;
     private javax.swing.JButton btnPFNA;
     private javax.swing.JToggleButton btncalcularFA;
+    private javax.swing.JComboBox<String> caracteristicasProyectoDuracion;
+    private javax.swing.JComboBox<String> caracteristicasProyectoEsfuerzo;
     private javax.swing.JTextField input1;
     private javax.swing.JTextField input2;
     private javax.swing.JTextField input3;
     private javax.swing.JTextField input4;
     private javax.swing.JTextField input5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel je1;
     private javax.swing.JLabel je2;
     private javax.swing.JLabel je3;
     private javax.swing.JLabel je4;
     private javax.swing.JLabel je5;
+    private javax.swing.JPanel panelDuracion;
+    private javax.swing.JPanel panelEsfuerzo;
     private javax.swing.JComboBox<String> tiposE;
     // End of variables declaration//GEN-END:variables
 

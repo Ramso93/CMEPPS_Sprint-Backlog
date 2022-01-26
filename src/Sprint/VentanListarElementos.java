@@ -5,7 +5,9 @@
  */
 package Sprint;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,8 +19,11 @@ public class VentanListarElementos extends javax.swing.JFrame {
     /**
      * Creates new form VentanListarElementos
      */
-    DefaultTableModel modelo;
-
+    public static String[] elemento = new String[6];
+    public static DefaultTableModel modelo;
+    public static int posRow = 0;
+    EditarElemento ed;
+    
     public VentanListarElementos() {
         initComponents();
         modelo = new DefaultTableModel();
@@ -30,6 +35,10 @@ public class VentanListarElementos extends javax.swing.JFrame {
         modelo.addColumn("Nº Registros");
         this.tablaElementos.setModel(modelo);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setTitle("Lista elementos funcionales");
+        acciones.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "Acciones", TitledBorder.CENTER,
+        TitledBorder.TOP));
     }
 
     /**
@@ -44,6 +53,9 @@ public class VentanListarElementos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaElementos = new javax.swing.JTable();
+        acciones = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,19 +71,58 @@ public class VentanListarElementos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaElementos);
 
+        jButton1.setText("Editar elemento");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Eliminar elemento");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout accionesLayout = new javax.swing.GroupLayout(acciones);
+        acciones.setLayout(accionesLayout);
+        accionesLayout.setHorizontalGroup(
+            accionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accionesLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+        accionesLayout.setVerticalGroup(
+            accionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accionesLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(accionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(406, 406, 406)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(325, 325, 325))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(acciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(262, 262, 262))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,11 +131,41 @@ public class VentanListarElementos extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(acciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here: editar
+        //Object ele = ;
+        /*System.out.println(modelo.getValueAt(tablaElementos.getSelectedRow(),0));
+        System.out.println(modelo.getValueAt(tablaElementos.getSelectedRow(),1));
+        System.out.println(modelo.getValueAt(tablaElementos.getSelectedRow(),2));
+        System.out.println(modelo.getValueAt(tablaElementos.getSelectedRow(),3));
+        System.out.println(modelo.getValueAt(tablaElementos.getSelectedRow(),4));
+        System.out.println(modelo.getValueAt(tablaElementos.getSelectedRow(),5));*/
+        //System.out.println(modelo.getValueAt(tablaElementos.getSelectedColumn(), tablaElementos.getSelectedRow()));
+        
+        
+        elemento[0] = String.valueOf(modelo.getValueAt(tablaElementos.getSelectedRow(),0));
+        elemento[1] = String.valueOf(modelo.getValueAt(tablaElementos.getSelectedRow(),1));
+        elemento[2] = String.valueOf(modelo.getValueAt(tablaElementos.getSelectedRow(),2));
+        elemento[3] = String.valueOf(modelo.getValueAt(tablaElementos.getSelectedRow(),3));
+        elemento[4] = String.valueOf(modelo.getValueAt(tablaElementos.getSelectedRow(),4));
+        elemento[5] = String.valueOf(modelo.getValueAt(tablaElementos.getSelectedRow(),5));
+        posRow = tablaElementos.getSelectedRow();
+        ed = new EditarElemento();
+        ed.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here: eliminar
+        modelo.removeRow(tablaElementos.getSelectedRow());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,6 +203,9 @@ public class VentanListarElementos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaElementos;
@@ -155,7 +239,6 @@ public class VentanListarElementos extends javax.swing.JFrame {
             modelo.addRow(info);
         }
     }
-
     public String[] getElemento() {
         String[] elemento = new String[3];
         int row = tablaElementos.getRowCount();

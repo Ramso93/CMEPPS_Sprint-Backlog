@@ -5,7 +5,14 @@
  */
 package Sprint;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,20 +24,44 @@ public class ventanaSVA extends javax.swing.JFrame {
     /**
      * Creates new form ventanaSVA
      */
-    DefaultTableModel modelF;
-    
-    public ventanaSVA() {
+    int total;
+    public ventanaSVA(){
         initComponents();
+        JOptionPane.showMessageDialog(null, "Introducir en la columna INFLUENCIA"
+                + " de la tabla SVA solo \nlos valores que estan permitidos en la tabla Valor-Influencia");
         setLocationRelativeTo(null);
-        modelF = new DefaultTableModel();
-        modelF.addColumn("Atributos");
-        modelF.addColumn("Influencia");
-        modelF.addRow(new Object[]{"Comunicación de datos"});
-        
-        this.tablaFA.setModel(modelF);
+        setTitle("Tabla SVA");
+        tabla1.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "Tabla SVA", TitledBorder.LEFT,
+        TitledBorder.TOP));
+        tabla2.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "Tabla Valor-Influencia", TitledBorder.LEFT,
+        TitledBorder.TOP));
+        total = 0;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //datos = new ArrayList<>(16);
+        if(!VentanaPrincipal.datos.isEmpty()){
+            //System.out.println("recuperando datos");
+            i1.setText(String.valueOf(VentanaPrincipal.datos.get(0)));
+            i2.setText(String.valueOf(VentanaPrincipal.datos.get(1)));
+            i3.setText(String.valueOf(VentanaPrincipal.datos.get(2)));
+            i4.setText(String.valueOf(VentanaPrincipal.datos.get(3)));
+            i5.setText(String.valueOf(VentanaPrincipal.datos.get(4)));
+            i6.setText(String.valueOf(VentanaPrincipal.datos.get(5)));
+            i7.setText(String.valueOf(VentanaPrincipal.datos.get(6)));
+            i8.setText(String.valueOf(VentanaPrincipal.datos.get(7)));
+            i9.setText(String.valueOf(VentanaPrincipal.datos.get(8)));
+            i10.setText(String.valueOf(VentanaPrincipal.datos.get(9)));
+            i11.setText(String.valueOf(VentanaPrincipal.datos.get(10)));
+            i12.setText(String.valueOf(VentanaPrincipal.datos.get(11)));
+            i13.setText(String.valueOf(VentanaPrincipal.datos.get(12)));
+            i14.setText(String.valueOf(VentanaPrincipal.datos.get(13)));
+            i15.setText(String.valueOf(VentanaPrincipal.datos.get(14)));
+            totalSuma.setText(String.valueOf(VentanaPrincipal.datos.get(15)));
+        }else{
+            //System.out.println("no hay datos para recuperar");
+        }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,61 +71,293 @@ public class ventanaSVA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaFA = new javax.swing.JTable();
+        tabla1 = new javax.swing.JPanel();
+        jl1 = new javax.swing.JLabel();
+        i1 = new javax.swing.JTextField();
+        jl2 = new javax.swing.JLabel();
+        i2 = new javax.swing.JTextField();
+        jl3 = new javax.swing.JLabel();
+        i3 = new javax.swing.JTextField();
+        i4 = new javax.swing.JTextField();
+        jl4 = new javax.swing.JLabel();
+        i5 = new javax.swing.JTextField();
+        jl5 = new javax.swing.JLabel();
+        i6 = new javax.swing.JTextField();
+        jl6 = new javax.swing.JLabel();
+        jl7 = new javax.swing.JLabel();
+        i7 = new javax.swing.JTextField();
+        jl8 = new javax.swing.JLabel();
+        i8 = new javax.swing.JTextField();
+        jl9 = new javax.swing.JLabel();
+        i9 = new javax.swing.JTextField();
+        jl10 = new javax.swing.JLabel();
+        i10 = new javax.swing.JTextField();
+        jl11 = new javax.swing.JLabel();
+        i11 = new javax.swing.JTextField();
+        jl12 = new javax.swing.JLabel();
+        i12 = new javax.swing.JTextField();
+        jl13 = new javax.swing.JLabel();
+        i13 = new javax.swing.JTextField();
+        jl14 = new javax.swing.JLabel();
+        i14 = new javax.swing.JTextField();
+        jl15 = new javax.swing.JLabel();
+        i15 = new javax.swing.JTextField();
+        totalSuma = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        tabla2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tablaFA.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jl1.setText("Comunicación de datos");
+
+        jl2.setText("Funciones distribuidas");
+
+        jl3.setText("Prestaciones");
+
+        jl4.setText("Gran uso de la configuración");
+
+        jl5.setText("Velocidad de las transacciones");
+
+        jl6.setText("Entrada de datos en línea");
+
+        jl7.setText("Diseño para la eficiencia del usuario final");
+
+        jl8.setText("Actualización de datos en línea");
+
+        jl9.setText("Complejidad del proceso lógico interno de la aplicación");
+
+        jl10.setText("Reusabilidad del código");
+
+        jl11.setText("Facilidad del código");
+
+        jl12.setText("Facilidad de instalación");
+
+        jl13.setText("Facilidad de operación");
+
+        jl14.setText("Localicaciones múltiples");
+
+        jl15.setText("Facilidad de cambios");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("SUMA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tablaFA);
+        });
+
+        javax.swing.GroupLayout tabla1Layout = new javax.swing.GroupLayout(tabla1);
+        tabla1.setLayout(tabla1Layout);
+        tabla1Layout.setHorizontalGroup(
+            tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabla1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabla1Layout.createSequentialGroup()
+                        .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl15)
+                            .addComponent(jl1)
+                            .addComponent(jl2)
+                            .addComponent(jl3)
+                            .addComponent(jl4)
+                            .addComponent(jl5)
+                            .addComponent(jl6)
+                            .addComponent(jl7)
+                            .addComponent(jl8)
+                            .addComponent(jl9)
+                            .addComponent(jl10)
+                            .addComponent(jl11)
+                            .addComponent(jl12)
+                            .addComponent(jl13)
+                            .addComponent(jl14))
+                        .addGap(55, 55, 55))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabla1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(44, 44, 44)))
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(i1)
+                        .addComponent(i2)
+                        .addComponent(i3)
+                        .addComponent(i4)
+                        .addComponent(i5)
+                        .addComponent(i6)
+                        .addComponent(i7)
+                        .addComponent(i8)
+                        .addComponent(i9)
+                        .addComponent(i10)
+                        .addComponent(i11)
+                        .addComponent(i12)
+                        .addComponent(i13)
+                        .addComponent(i14)
+                        .addComponent(i15, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                    .addComponent(totalSuma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 23, Short.MAX_VALUE))
+        );
+        tabla1Layout.setVerticalGroup(
+            tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabla1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl1)
+                    .addComponent(i1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl2)
+                    .addComponent(i2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl3)
+                    .addComponent(i3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl4)
+                    .addComponent(i4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl5)
+                    .addComponent(i5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl6)
+                    .addComponent(i6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl7)
+                    .addComponent(i7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl8)
+                    .addComponent(i8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl9)
+                    .addComponent(i9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl10)
+                    .addComponent(i10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl11)
+                    .addComponent(i11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl12)
+                    .addComponent(i12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl13)
+                    .addComponent(i13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl14)
+                    .addComponent(i14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl15)
+                    .addComponent(i15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"0", "Sin influencia"},
+                {"1", "Influencia mínima"},
+                {"2", "Influencia moderada"},
+                {"3", "Influencia apreciable"},
+                {"4", "Influencia significante"},
+                {"5", "Influencia muy fuerte"}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Valor", "Influencia"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout tabla2Layout = new javax.swing.GroupLayout(tabla2);
+        tabla2.setLayout(tabla2Layout);
+        tabla2Layout.setHorizontalGroup(
+            tabla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabla2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        tabla2Layout.setVerticalGroup(
+            tabla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabla2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(tabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tabla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tabla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int a1 = i1.getText().isEmpty()?0:Integer.parseInt(i1.getText());
+        int a2 = i2.getText().isEmpty()?0:Integer.parseInt(i2.getText());
+        int a3 = i3.getText().isEmpty()?0:Integer.parseInt(i3.getText());
+        int a4 = i4.getText().isEmpty()?0:Integer.parseInt(i4.getText());
+        int a5 = i5.getText().isEmpty()?0:Integer.parseInt(i5.getText());
+        int a6 = i6.getText().isEmpty()?0:Integer.parseInt(i6.getText());
+        int a7 = i7.getText().isEmpty()?0:Integer.parseInt(i7.getText());
+        int a8 = i8.getText().isEmpty()?0:Integer.parseInt(i8.getText());
+        int a9 = i9.getText().isEmpty()?0:Integer.parseInt(i9.getText());
+        int a10 = i10.getText().isEmpty()?0:Integer.parseInt(i10.getText());
+        int a11 = i11.getText().isEmpty()?0:Integer.parseInt(i11.getText());
+        int a12 = i12.getText().isEmpty()?0:Integer.parseInt(i12.getText());
+        int a13 = i13.getText().isEmpty()?0:Integer.parseInt(i13.getText());
+        int a14 = i14.getText().isEmpty()?0:Integer.parseInt(i14.getText());
+        int a15 = i15.getText().isEmpty()?0:Integer.parseInt(i15.getText());
+        VentanaPrincipal.datos.add(0, a1);
+        VentanaPrincipal.datos.add(1, a2);
+        VentanaPrincipal.datos.add(2, a3);
+        VentanaPrincipal.datos.add(3, a4);
+        VentanaPrincipal.datos.add(4, a5);
+        VentanaPrincipal.datos.add(5, a6);
+        VentanaPrincipal.datos.add(6, a7);
+        VentanaPrincipal.datos.add(7, a8);
+        VentanaPrincipal.datos.add(8, a9);
+        VentanaPrincipal.datos.add(9, a10);
+        VentanaPrincipal.datos.add(10, a11);
+        VentanaPrincipal.datos.add(11, a12);
+        VentanaPrincipal.datos.add(12, a13);
+        VentanaPrincipal.datos.add(13, a14);
+        VentanaPrincipal.datos.add(14, a15);
+        total = a1+a2+a3+a4+a5+a6+a7+a8+a9+a10+a11+a12+a13+a14+a15;
+        VentanaPrincipal.datos.add(15, total);
+        totalSuma.setText(String.valueOf(total));
+    }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -134,9 +397,41 @@ public class ventanaSVA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField i1;
+    private javax.swing.JTextField i10;
+    private javax.swing.JTextField i11;
+    private javax.swing.JTextField i12;
+    private javax.swing.JTextField i13;
+    private javax.swing.JTextField i14;
+    private javax.swing.JTextField i15;
+    private javax.swing.JTextField i2;
+    private javax.swing.JTextField i3;
+    private javax.swing.JTextField i4;
+    private javax.swing.JTextField i5;
+    private javax.swing.JTextField i6;
+    private javax.swing.JTextField i7;
+    private javax.swing.JTextField i8;
+    private javax.swing.JTextField i9;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable tablaFA;
+    private javax.swing.JLabel jl1;
+    private javax.swing.JLabel jl10;
+    private javax.swing.JLabel jl11;
+    private javax.swing.JLabel jl12;
+    private javax.swing.JLabel jl13;
+    private javax.swing.JLabel jl14;
+    private javax.swing.JLabel jl15;
+    private javax.swing.JLabel jl2;
+    private javax.swing.JLabel jl3;
+    private javax.swing.JLabel jl4;
+    private javax.swing.JLabel jl5;
+    private javax.swing.JLabel jl6;
+    private javax.swing.JLabel jl7;
+    private javax.swing.JLabel jl8;
+    private javax.swing.JLabel jl9;
+    private javax.swing.JPanel tabla1;
+    private javax.swing.JPanel tabla2;
+    private javax.swing.JLabel totalSuma;
     // End of variables declaration//GEN-END:variables
 }
