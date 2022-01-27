@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author jhony
  */
 public class ventanaSVA extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ventanaSVA
      */

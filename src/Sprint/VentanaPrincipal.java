@@ -31,6 +31,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    //todo hecho
     public VentanaPrincipal() {
         initComponents();
         setTitle("Practica Punto Función");
@@ -60,22 +61,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnAñadir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        tiposE = new javax.swing.JComboBox<>();
-        je1 = new javax.swing.JLabel();
-        input1 = new javax.swing.JTextField();
-        je2 = new javax.swing.JLabel();
-        input2 = new javax.swing.JTextField();
-        je5 = new javax.swing.JLabel();
-        input5 = new javax.swing.JTextField();
-        input3 = new javax.swing.JTextField();
-        je3 = new javax.swing.JLabel();
-        input4 = new javax.swing.JTextField();
-        je4 = new javax.swing.JLabel();
         btnComplejidad = new javax.swing.JButton();
         btnPFNA = new javax.swing.JButton();
         btncalcularFA = new javax.swing.JToggleButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        btnAñadir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        input5 = new javax.swing.JTextField();
+        input4 = new javax.swing.JTextField();
+        input3 = new javax.swing.JTextField();
+        input2 = new javax.swing.JTextField();
+        input1 = new javax.swing.JTextField();
+        tiposE = new javax.swing.JComboBox<>();
+        je5 = new javax.swing.JLabel();
+        je4 = new javax.swing.JLabel();
+        je3 = new javax.swing.JLabel();
+        je2 = new javax.swing.JLabel();
+        je1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         panelEsfuerzo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         caracteristicasProyectoEsfuerzo = new javax.swing.JComboBox<>();
@@ -90,32 +94,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnAñadir.setText("Añadir");
-        btnAñadir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAñadirActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Elemento funcional:");
-
-        tiposE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar tipo", "EE", "SE", "CE", "FLI", "FLE" }));
-        tiposE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tiposEActionPerformed(evt);
-            }
-        });
-
-        je1.setText("Nombre:");
-
-        je2.setText("Nº Ficheros  Referenciados:");
-
-        je5.setText("Nº  Datos Elementales:");
-
-        je3.setText("Nº Ficheros  Relacionados");
-
-        je4.setText("Nº Tipos de Registros");
 
         btnComplejidad.setText("Calcular Complejidad");
         btnComplejidad.addActionListener(new java.awt.event.ActionListener() {
@@ -138,43 +116,93 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Calcular PFA");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Calcular FA");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        btnAñadir.setText("Añadir");
+        btnAñadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirActionPerformed(evt);
+            }
+        });
+
+        tiposE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar tipo", "EE", "SE", "CE", "FLI", "FLE" }));
+        tiposE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiposEActionPerformed(evt);
+            }
+        });
+
+        je5.setText("Nº  Datos Elementales:");
+
+        je4.setText("Nº Tipos de Registros");
+
+        je3.setText("Nº Ficheros  Relacionados");
+
+        je2.setText("Nº Ficheros  Referenciados:");
+
+        je1.setText("Nombre:");
+
+        jLabel1.setText("Elemento funcional:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnPFNA, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(btncalcularFA, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnComplejidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPFNA, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btncalcularFA, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(je1)
+                                    .addComponent(jLabel1)
+                                    .addComponent(je2)
+                                    .addComponent(je3)
+                                    .addComponent(je4)
+                                    .addComponent(je5))
+                                .addGap(48, 48, 48)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 26, 26))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(je1)
-                    .addComponent(jLabel1)
-                    .addComponent(je2)
-                    .addComponent(je3)
-                    .addComponent(je4)
-                    .addComponent(je5))
-                .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(input4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(input1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(input3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(input2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(154, 154, 154))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(284, 284, 284))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tiposE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,13 +226,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(je5)
                     .addComponent(input5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAñadir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAñadir)
                     .addComponent(btnComplejidad)
                     .addComponent(btnPFNA)
-                    .addComponent(btncalcularFA))
-                .addGap(20, 20, 20))
+                    .addComponent(btncalcularFA)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap())
         );
 
         jLabel2.setText("Proyecto");
@@ -317,26 +350,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(panelEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -376,36 +409,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         resetEntradas();
 
     }//GEN-LAST:event_btnAñadirActionPerformed
-
-    private void tiposEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiposEActionPerformed
-        // TODO add your handling code here:
-
-        if (tiposE.getSelectedItem().toString().equals("EE")) {
-            je3.setVisible(true);
-            input3.setVisible(true);
-            je2.setVisible(false);
-            input2.setVisible(false);
-
-            je4.setVisible(false);
-            input4.setVisible(false);
-        } else if (tiposE.getSelectedItem().toString().matches("SE|CE")) {
-            je2.setVisible(true);
-            input2.setVisible(true);
-
-            je3.setVisible(false);
-            input3.setVisible(false);
-            je4.setVisible(false);
-            input4.setVisible(false);
-        } else if (tiposE.getSelectedItem().toString().matches("FLI|FLE")) {
-            je4.setVisible(true);
-            input4.setVisible(true);
-            je2.setVisible(false);
-            input2.setVisible(false);
-            je3.setVisible(false);
-            input3.setVisible(false);
-        }
-
-    }//GEN-LAST:event_tiposEActionPerformed
 
     private void btnComplejidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplejidadActionPerformed
         // TODO add your handling code here:
@@ -538,8 +541,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         sva = new ventanaSVA();
         sva.setVisible(true);
-        fa = (float) (0.65 + (0.01 * this.datos.get(15)));
-        pfa = vc.calcularPFNA() * fa;
     }//GEN-LAST:event_btncalcularFAActionPerformed
 
     private void caracteristicasProyectoEsfuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caracteristicasProyectoEsfuerzoActionPerformed
@@ -602,8 +603,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //float f = (float)Math.pow(25.28, 0.666);
         //float e = (float)19.82 * f;
         //System.out.println(e);
-        //duracion = duracionC * (float)Math.pow(pfa, duracionE);
-        duracion = (float) (0.679 * (float)Math.pow(25.28, 0.341));
+        duracion = duracionC * (float)Math.pow(pfa, duracionE);
+        //duracion = (float) (0.679 * (float)Math.pow(25.28, 0.341));
         DecimalFormat df = new DecimalFormat("#.##");
         String s = df.format(duracion);
         //System.out.println(df.format(duracion)+" horas");
@@ -615,6 +616,45 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ven.setVisible(true);
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        pfa = vc.calcularPFNA() * fa;
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        fa = (float) (0.65 + (0.01 * this.datos.get(15)));
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void tiposEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiposEActionPerformed
+        // TODO add your handling code here:
+
+        if (tiposE.getSelectedItem().toString().equals("EE")) {
+            je3.setVisible(true);
+            input3.setVisible(true);
+            je2.setVisible(false);
+            input2.setVisible(false);
+
+            je4.setVisible(false);
+            input4.setVisible(false);
+        } else if (tiposE.getSelectedItem().toString().matches("SE|CE")) {
+            je2.setVisible(true);
+            input2.setVisible(true);
+
+            je3.setVisible(false);
+            input3.setVisible(false);
+            je4.setVisible(false);
+            input4.setVisible(false);
+        } else if (tiposE.getSelectedItem().toString().matches("FLI|FLE")) {
+            je4.setVisible(true);
+            input4.setVisible(true);
+            je2.setVisible(false);
+            input2.setVisible(false);
+            je3.setVisible(false);
+            input3.setVisible(false);
+        }
+    }//GEN-LAST:event_tiposEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -665,6 +705,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField input5;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -673,6 +715,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel je1;
     private javax.swing.JLabel je2;
     private javax.swing.JLabel je3;
